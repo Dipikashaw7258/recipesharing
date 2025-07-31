@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login / Sign Up</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #ffd6d6, #fff1f1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+    }
+
+    .container {
+      position: relative;
+      width: 600px;
+    }
+
+    .form-card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      background: none;
+      border: none;
+      font-weight: bold;
+      font-size: 16px;
+      color: #999;
+      cursor: pointer;
+      padding-bottom: 5px;
+    }
+
+    .tab.active {
+      color: #333;
+      border-bottom: 2px solid coral;
+    }
+
+    .form input[type="text"],
+    .form input[type="email"],
+    .form input[type="password"],
+    .form input[type="tel"] {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      background-color: #fafafa;
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+
+    .options a {
+      text-decoration: none;
+      color: coral;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      background: linear-gradient(to right, #ff6a6a, #ff9472);
+      color: white;
+      font-weight: bold;
+      border-radius: 25px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .touch-id {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 12px;
+      color: #aaa;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .food-img {
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 6px solid white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    } 
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-card">
+      <div class="tabs">
+        <button class="tab active" onclick="showForm('login')">Sign in</button>
+        <button class="tab" onclick="showForm('signup')">Sign up</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="login-form" class="form">
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+        <div class="options">
+          <label><input type="checkbox"> Remember me</label>
+          <a href="#">Forgot password?</a>
+        </div>
+        <button type="submit" class="login-btn">Login</button>
+        
+      </form>
+
+      <!-- Sign Up Form -->
+      <form id="signup-form" class="form hidden">
+        <input type="text" placeholder="Name" required>
+        <input type="email" placeholder="Email" required>
+        <input type="tel" placeholder="Phone number" required>
+        <input type="password" placeholder="Password" required>
+        <div class="options">
+          <label><input type="checkbox"> Remember me</label>
+        </div>
+        <button type="submit" class="login-btn">Sign Up</button>
+        
+      </form>
+    </div>
+
+
+  </div>
+
+  <script>
+    function showForm(formType) {
+      document.getElementById("login-form").classList.toggle("hidden", formType !== "login");
+      document.getElementById("signup-form").classList.toggle("hidden", formType !== "signup");
+
+      document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
+      document.querySelector(tab[onclick="showForm('${formType}')"]).classList.add("active");
+    }
+  </script>
+</body>
+</html>
