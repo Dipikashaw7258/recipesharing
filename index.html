@@ -150,11 +150,19 @@
 
   <script>
     function showForm(formType) {
-      document.getElementById("login-form").classList.toggle("hidden", formType !== "login");
-      document.getElementById("signup-form").classList.toggle("hidden", formType !== "signup");
+    // Show/Hide Forms
+    document.getElementById("login-form").classList.toggle("hidden", formType !== "login");
+    document.getElementById("signup-form").classList.toggle("hidden", formType !== "signup");
 
-      document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
-      document.querySelector(tab[onclick="showForm('${formType}')"]).classList.add("active");
+    // Toggle active tab underline
+    const tabs = document.querySelectorAll(".tab");
+    tabs.forEach(tab => {
+      tab.classList.remove("active");
+      if ((formType === "login" && tab.textContent === "Sign in") ||
+          (formType === "signup" && tab.textContent === "Sign up")) {
+        tab.classList.add("active");
+        }
+     });
     }
   </script>
 </body>
